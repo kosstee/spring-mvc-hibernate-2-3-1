@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new user</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            margin: 0;
+        }
+
+        div#container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        form#save {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form#save input[type="text"], form#save input[type="submit"] {
+            margin: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        h2 {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2>Create new user</h2>
+    <div>
+        <form id="save" th:method="POST" th:action="@{/users(action='SAVE')}" th:object="${user}">
+            <label for="name">Enter name: </label>
+            <input type="text" th:field="*{name}" id="name"/>
+
+            <label for="login">Enter login: </label>
+            <input type="text" th:field="*{login}" id="login"/>
+
+            <input type="submit" value="Create"/>
+        </form>
+    </div>
+    <div>
+        <form id="home" th:method="GET" th:action="@{/users}">
+            <input type="submit" value="Home page"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

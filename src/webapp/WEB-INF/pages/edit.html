@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.getLogin()}"></title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            margin: 0;
+        }
+
+        div#container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        form#edit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form#edit input[type="text"], form#edit input[type="submit"] {
+            margin: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        h2, form#home, form#delete {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2>Edit user: <b th:text="${user.getLogin()}"></b></h2>
+    <div>
+        <form id="edit" th:method="POST" th:action="@{/users(id=${user.getId()}, action='UPDATE')}" th:object="${user}">
+            <label for="name">Edit name: </label>
+            <input type="text" th:field="*{name}" id="name"/>
+            <input type="submit" value="Update"/>
+        </form>
+    </div>
+    <div>
+        <form id="delete" th:method="POST" th:action="@{/users(id=${user.getId()}, action='DELETE')}">
+            <input type="submit" value="Delete account"/>
+        </form>
+    </div>
+    <div>
+        <form id="home" th:method="GET" th:action="@{/users}">
+            <input type="submit" value="Home page"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

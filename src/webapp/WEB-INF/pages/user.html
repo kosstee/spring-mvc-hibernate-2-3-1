@@ -35,16 +35,26 @@
         h2, form#home, form#delete {
             margin: 10px;
         }
+
+        h3 {
+            margin: 5px;
+        }
     </style>
 </head>
 <body>
 <div id="container">
-    <h2>Edit user: <b th:text="${user.getLogin()}"></b></h2>
+    <h2>Personal page</h2>
+    <h3>Login: <b th:text="${user.getLogin()}"></b></h3>
+    <h3>Name: <b th:text="${user.getName()}"></b></h3>
     <div>
-        <form id="edit" th:method="POST" th:action="@{/users/update(id=${user.getId()})}" th:object="${user}">
-            <label for="name">Edit name: </label>
-            <input type="text" th:field="*{name}" id="name"/>
-            <input type="submit" value="Update"/>
+        <form id="edit" th:method="GET" th:action="@{/users/edit}">
+            <input type="hidden" name="id" th:value="${user.getId()}"/>
+            <input type="submit" value="Edit account"/>
+        </form>
+    </div>
+    <div>
+        <form id="delete" th:method="POST" th:action="@{/users/delete(id=${user.getId()})}">
+            <input type="submit" value="Delete account"/>
         </form>
     </div>
     <div>

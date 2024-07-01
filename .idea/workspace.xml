@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c06696a-2949-4177-a3a6-87334a6705d4" name="Changes" comment="init">
+    <list default="true" id="6c06696a-2949-4177-a3a6-87334a6705d4" name="Changes" comment="refactor: split method addUser&#10;refactor: @Transactional in UsersServiceImpl&#10;refactor: method update in UserDaoImpl&#10;refactor: change method names in UsersController">
+      <change afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controller/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/dao/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/dao/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/enums/RequestType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/service/UsersServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/service/UsersServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/new.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/new.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +207,7 @@
       <updated>1719528459254</updated>
       <workItem from="1719528460308" duration="3000" />
       <workItem from="1719530828341" duration="30459000" />
-      <workItem from="1719747730063" duration="5539000" />
+      <workItem from="1719747730063" duration="12633000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -221,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719684601553</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor: split method addUser&#10;refactor: @Transactional in UsersServiceImpl&#10;refactor: method update in UserDaoImpl&#10;refactor: change method names in UsersController">
+      <option name="closed" value="true" />
+      <created>1719851750788</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719851750789</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +244,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="refactor: split method addUser&#10;refactor: @Transactional in UsersServiceImpl&#10;refactor: method update in UserDaoImpl&#10;refactor: change method names in UsersController" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: split method addUser&#10;refactor: @Transactional in UsersServiceImpl&#10;refactor: method update in UserDaoImpl&#10;refactor: change method names in UsersController" />
   </component>
 </project>

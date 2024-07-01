@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
-import web.enums.RequestType;
 import web.service.UsersService;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class UsersController {
     }
 
     @GetMapping
-    public String users(ModelMap model) {
+    public String showAllUsers(ModelMap model) {
         List<User> users = usersService.getUsers();
         model.addAttribute("users", users);
         return "users";
@@ -36,21 +35,25 @@ public class UsersController {
     }
 
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String createNewUser(@ModelAttribute("user") User user) {
         return "new";
     }
 
-    @PostMapping
-    public String addUser(@ModelAttribute("user") User user,
-                          @RequestParam(required = false, name = "id") Long id,
-                          @RequestParam("action") String action) {
+    @PostMapping("/save")
+    public String saveUser(@ModelAttribute("user") User user) {
+        usersService.save(user);
+        return "redirect:/users";
+    }
 
-        switch (RequestType.valueOf(action)) {
-            case SAVE -> usersService.save(user);
-            case UPDATE -> usersService.update(id, user);
-            case DELETE -> usersService.delete(id);
-        }
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam(required = false, name = "id") Long id) {
+        usersService.update(id, user);
+        return "redirect:/users";
+    }
 
+    @PostMapping("/delete")
+    public String deleteUser(@ModelAttribute("user") User user, @RequestParam(required = false, name = "id") Long id) {
+        usersService.delete(id);
         return "redirect:/users";
     }
 }

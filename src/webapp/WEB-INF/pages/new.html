@@ -42,7 +42,7 @@
 <div id="container">
     <h2>Create new user</h2>
     <div>
-        <form id="save" th:method="POST" th:action="@{/users(action='SAVE')}" th:object="${user}">
+        <form id="save" th:method="POST" th:action="@{/users/save}" th:object="${user}">
             <label for="name">Enter name: </label>
             <input type="text" th:field="*{name}" id="name"/>
 

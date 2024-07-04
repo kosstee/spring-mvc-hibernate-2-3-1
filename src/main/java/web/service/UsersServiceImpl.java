@@ -3,19 +3,19 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import web.dao.UserDao;
 import web.model.User;
+import web.repository.UserRepository;
 
 import java.util.List;
 
 @Service
 public class UsersServiceImpl implements UsersService {
 
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UsersServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
+    public UsersServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Transactional
@@ -24,30 +24,34 @@ public class UsersServiceImpl implements UsersService {
         if (user.getLogin().isEmpty()) {
             throw new IllegalArgumentException("Login is required");
         }
-        userDao.add(user);
+        userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<User> getUsers() {
-        return userDao.findAll();
+        return userRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
     public User getUserById(Long id) {
-        return userDao.findById(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Transactional
     @Override
     public void update(Long id, User user) {
-        userDao.update(id, user);
+        userRepository.findById(id).ifPresent((u) -> {
+            user.setId(u.getId());
+            user.setLogin(u.getLogin());
+            userRepository.save(user);
+        });
     }
 
     @Transactional
     @Override
     public void delete(Long id) {
-        userDao.delete(id);
+        userRepository.deleteById(id);
     }
 }

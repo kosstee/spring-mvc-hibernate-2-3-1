@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UsersService;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/users")
 public class UsersController {
@@ -23,8 +21,7 @@ public class UsersController {
 
     @GetMapping
     public String showAllUsers(ModelMap model) {
-        List<User> users = usersService.getUsers();
-        model.addAttribute("users", users);
+        model.addAttribute("users", usersService.getUsers());
         return "users";
     }
 
